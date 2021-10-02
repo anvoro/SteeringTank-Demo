@@ -7,15 +7,14 @@ public class InterfaceTypeDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        RequiredInterfaceAttribute att = attribute as RequiredInterfaceAttribute;
+        RequiredInterfaceAttribute attr = attribute as RequiredInterfaceAttribute;
 
         if (property.propertyType != SerializedPropertyType.ObjectReference)
         {
-            EditorGUI.LabelField(position, label.text, "InterfaceType Attribute can only be used with MonoBehaviour Components!");
+            EditorGUI.LabelField(position, label.text, "RequiredInterface Attribute can only be used with MonoBehaviour Components!");
             return;
         }
 
-        // Pick a specific component
         MonoBehaviour oldComp = property.objectReferenceValue as MonoBehaviour;
 
         GameObject temp = null;
@@ -25,13 +24,13 @@ public class InterfaceTypeDrawer : PropertyDrawer
         {
             if (oldComp == null)
             {
-                temp = new GameObject("None [" + att.requiredType.Name + "]");
+                temp = new GameObject("None [" + attr.requiredType.Name + "]");
                 oldComp = temp.AddComponent<MonoInterface>();
             }
             else
             {
                 oldName = oldComp.name;
-                oldComp.name = oldName + " [" + att.requiredType.Name + "]";
+                oldComp.name = oldName + " [" + attr.requiredType.Name + "]";
             }
         }
 
@@ -45,19 +44,16 @@ public class InterfaceTypeDrawer : PropertyDrawer
                 oldComp.name = oldName;
         }
 
-        // Make sure something changed.
-        if (oldComp == comp) return;
+        if (oldComp == comp)
+            return;
 
-        // If a component is assigned, make sure it is the interface we are looking for.
         if (comp != null)
         {
-            // Make sure component is of the right interface
-            if (comp.GetType() != att.requiredType)
-                // Component failed. Check game object.
-                comp = comp.gameObject.GetComponent(att.requiredType) as MonoBehaviour;
+            if (comp.GetType() != attr.requiredType)
+                comp = comp.gameObject.GetComponent(attr.requiredType) as MonoBehaviour;
 
-            // Item failed test. Do not override old component
-            if (comp == null) return;
+            if (comp == null)
+                return;
         }
 
         property.objectReferenceValue = comp;
