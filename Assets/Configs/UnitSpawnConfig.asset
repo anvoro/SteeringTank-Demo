@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b466d0b01d66544904d28297fe0956, type: 3}
+  m_Name: UnitSpawnConfig
+  m_EditorClassIdentifier: 
+  SpawnDelay: 1
+  MaxUnitCount: 10
+  Player: {fileID: 11400000, guid: a1b8bc10bda73164e89ed95dc62fb214, type: 2}
+  Enemies:
+  - {fileID: 11400000, guid: ced36751749d8204b9076f2e2b3e32bf, type: 2}
+  - {fileID: 11400000, guid: e1b32b53da5cf864aaa47234f908f4b8, type: 2}
+  - {fileID: 11400000, guid: e3c70f4d96aa01747816e0575fe1b381, type: 2}

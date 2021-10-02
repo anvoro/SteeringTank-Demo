@@ -1,0 +1,19 @@
+{
+    "name": "UnitSystem",
+    "rootNamespace": "",
+    "references": [
+        "Interfaces",
+        "World",
+        "Configs",
+        "Helpers"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

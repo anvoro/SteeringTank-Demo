@@ -1,0 +1,17 @@
+{
+    "name": "BodySystem",
+    "rootNamespace": "",
+    "references": [
+        "Interfaces",
+        "Helpers"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,19 @@
+{
+    "name": "SteeringBehaviors",
+    "rootNamespace": "",
+    "references": [
+        "Interfaces",
+        "BodySystem",
+        "Configs",
+        "Helpers"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
