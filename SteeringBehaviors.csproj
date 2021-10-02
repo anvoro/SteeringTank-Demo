@@ -316,9 +316,6 @@
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>Library\PackageCache\com.unity.purchasing@2.0.6\Editor\UnityEditor.Purchasing.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\PackageCache\com.unity.purchasing@2.0.6\UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>Library\PackageCache\com.unity.analytics@3.3.5\Unity.Analytics.Tracker.dll</HintPath>
     </Reference>

@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{FD852F26-8AA4-65C5-EC73-41B3BAA2A3B2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -54,14 +53,17 @@
     <UnityVersion>2021.1.13f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Scripts\View\UI\BattleUI.cs" />
     <Compile Include="Assets\Scripts\View\UI\HealthBar.cs" />
     <Compile Include="Assets\Scripts\View\TrajectoryRenderer.cs" />
     <Compile Include="Assets\Scripts\View\UI\UnitView.cs" />
+    <Compile Include="Assets\Scripts\View\UI\MovableHealthBar.cs" />
     <Compile Include="Assets\Scripts\View\VFX\ParticleSystemWrapper.cs" />
     <Compile Include="Assets\Scripts\View\VFX\VFXSpawner.cs" />
     <Compile Include="Assets\Scripts\View\VFX\StandaloneVFXSpawner.cs" />
-    <Compile Include="Assets\Scripts\View\UI\MovableHealthBar.cs" />
     <Compile Include="Assets\Scripts\View\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>
