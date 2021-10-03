@@ -72,6 +72,11 @@ namespace Tank.WeaponSystem
 
         private void Update()
         {
+            foreach (WeaponCell weaponCell in _weapons)
+            {
+                weaponCell.Weapon.Tick(Time.deltaTime);
+            }
+
             this._weapons[this.CurrentWeaponIndex].Rotator.RotateToTarget(this._input.Target, Time.deltaTime);
         }
 

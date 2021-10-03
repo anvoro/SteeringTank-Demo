@@ -32,17 +32,10 @@ namespace Tank.WeaponSystem.Weapons
 
         public abstract float ExplosionRadius { get; }
 
-        private void OnDisable()
+        public virtual void Init()
         {
             this.RemainingCooldown = 0;
         }
-
-        private void Update()
-        {
-            this.Tick(Time.deltaTime);
-        }
-
-        public virtual void Init() { }
 
         public void Fire()
         {
@@ -54,7 +47,7 @@ namespace Tank.WeaponSystem.Weapons
             this.RemainingCooldown = this._cooldown;
         }
 
-        private void Tick(float deltaTime)
+        public void Tick(float deltaTime)
         {
             if (this.OnCooldown == true)
                 this.RemainingCooldown -= deltaTime;
