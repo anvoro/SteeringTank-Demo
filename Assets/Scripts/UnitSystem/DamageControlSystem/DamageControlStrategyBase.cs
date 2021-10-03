@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-namespace Assets.Scripts.UnitSystem.DamageControlSystem
+namespace Tank.UnitSystem.DamageControlSystem
 {
     internal abstract class DamageControlStrategyBase : ScriptableObject
     {

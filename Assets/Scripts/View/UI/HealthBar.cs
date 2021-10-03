@@ -3,7 +3,7 @@ using Tank.Interfaces.Unit;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.View.UI
+namespace Tank.View.UI
 {
     internal class HealthBar : MonoBehaviour
     {
@@ -22,6 +22,8 @@ namespace Assets.Scripts.View.UI
 
         public virtual void Init(IUnit unit)
         {
+            this._bar.value = 1f;
+
             this._unit = unit;
             this._unit.OnHealthChange += OnHealthChange;
 

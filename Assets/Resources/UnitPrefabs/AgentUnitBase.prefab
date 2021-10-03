@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 6645728360433432356}
   - component: {fileID: 9002993771631260954}
   - component: {fileID: 8188610124163143393}
-  - component: {fileID: 5615806444645006014}
   - component: {fileID: 8763871320886014219}
-  - component: {fileID: 2615802766450689648}
+  - component: {fileID: 5615806444645006014}
   m_Layer: 7
   m_Name: AgentUnitBase
   m_TagString: Untagged
@@ -115,19 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _providerStrategy: {fileID: 11400000, guid: b0f615c47f0fcf94fbcbd162a4487735, type: 2}
   _unitDetectRadius: 10
---- !u!114 &5615806444645006014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3032364672346133417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec15005e17652454fafb8123c7e1d74d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _vfx: {fileID: -7067580983567352916, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
 --- !u!114 &8763871320886014219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,8 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponHolderViewObject: {fileID: 0}
   _unitHudPoint: {fileID: 1217741956152875164}
-  _deathVFX: {fileID: 2615802766450689648}
---- !u!114 &2615802766450689648
+  _deathVFX: {fileID: 5615806444645006014}
+--- !u!114 &5615806444645006014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

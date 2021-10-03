@@ -12,11 +12,7 @@ namespace Tank.Game
     [DisallowMultipleComponent]
     public sealed class World : MonoBehaviour
     {
-        private static World instance;
-
         private readonly Dictionary<IBody, IUnit> _unitsInWorld = new Dictionary<IBody, IUnit>();
-
-        private IUnit _player;
 
         private IUnitManager _unitManager;
         private IEnvironment _environment;
@@ -41,13 +37,17 @@ namespace Tank.Game
         [SerializeField]
         private UnitTeam _playerTeam;
 
+        public static World Instance { get; private set; }
+
+        public IUnit Player { get; private set; }
+
         private void Awake()
         {
-            if (instance == null)
+            if (Instance == null)
             {
-                instance = this;
+                Instance = this;
             }
-            else if (instance == this)
+            else if (Instance == this)
             {
                 Destroy(gameObject);
                 Debug.LogError("World is already initialized");
@@ -61,10 +61,31 @@ namespace Tank.Game
             this._unitManager.OnUnitSpawn += this.SubscribeUnit;
         }
 
+        private void Start()
+        {
+            this._unitManager.Init(this._spawnConfig);
+
+            this._unitManager.SpawnPlayer();
+            this._unitManager.SpawnUnitsToMaximum();
+        }
+
+        public IUnit GetUnit(IBody body)
+        {
+            return this._unitsInWorld[body];
+        }
+
+        public IEnumerable<IUnit> GetUnitsAround(IBody observer, float radius, bool includeSelf)
+        {
+            foreach (IBody movable in this._environment.GetMovableAround(observer, radius, includeSelf))
+            {
+                yield return GetUnit(movable);
+            }
+        }
+
         private void SubscribeUnit(IUnit unit)
         {
             if (unit.Team == this._playerTeam)
-                this._player = unit;
+                this.Player = unit;
 
             this._unitsInWorld.Add(unit.Body, unit);
             this._environment.AddBody(unit.Body);
@@ -81,7 +102,7 @@ namespace Tank.Game
                 }
                 else
                 {
-                    unit.Body.SetPosition(this._spawnShape.GetRandomPoint(this._player.Body.Position), Quaternion.identity);
+                    unit.Body.SetPosition(this._spawnShape.GetRandomPoint(this.Player.Body.Position), Quaternion.identity);
                 }
 
                 unit.SetActive(true);
@@ -95,29 +116,6 @@ namespace Tank.Game
             this._unitManager.ReturnUnit(unit);
 
             unit.OnUnitDeath -= this.RemoveUnit;
-        }
-
-        private void Start()
-        {
-            this._unitManager.Init(this._spawnConfig);
-
-            this._unitManager.SpawnPlayer();
-            this._unitManager.SpawnUnitsToMaximum();
-        }
-
-        public static IUnit Player => instance._player;
-
-        public static IUnit GetUnit(IBody body)
-        {
-            return instance._unitsInWorld[body];
-        }
-
-        public static IEnumerable<IUnit> GetUnitsAround(IBody observer, float radius, bool includeSelf)
-        {
-            foreach (IBody movable in instance._environment.GetMovableAround(observer, radius, includeSelf))
-            {
-                yield return GetUnit(movable);
-            }
         }
     }
 }

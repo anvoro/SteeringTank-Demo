@@ -1,7 +1,9 @@
 ﻿
-using Assets.Scripts.WeaponSystem;
 using System;
-using Assets.Scripts.Interfaces.View;
+using Tank.Interfaces.View;
+using Tank.Interfaces.Weapon;
+using Tank.WeaponSystem.Weapons;
+using Tank.WeaponSystem.Rotator;
 using UnityEngine;
 
 namespace Tank.WeaponSystem
@@ -25,10 +27,11 @@ namespace Tank.WeaponSystem
         private WeaponCell[] _weapons;
 
         public event Action<IWeaponHolderView> OnChangeWeapon;
+        public event Action<IWeaponView> OnFire;
 
         public int CurrentWeaponIndex { get; private set; }
 
-        public IWeapon[] WeaponsCache { get; private set; }
+        public IWeaponView[] WeaponViews { get; private set; }
 
         private void Awake()
         {
@@ -43,7 +46,7 @@ namespace Tank.WeaponSystem
                 if (this._weapons.Length > 1)
                 {
                     this._input.ChangeWeapon += this.ChangeWeapon;
-                    this.WeaponsCache = new IWeapon[this._weapons.Length];
+                    this.WeaponViews = new IWeaponView[this._weapons.Length];
                 }
             }
 
@@ -54,8 +57,8 @@ namespace Tank.WeaponSystem
                     WeaponCell cell = this._weapons[i];
                     cell.Weapon.Init();
 
-                    if(this.WeaponsCache != null)
-                        this.WeaponsCache[i] = cell.Weapon;
+                    if(this.WeaponViews != null)
+                        this.WeaponViews[i] = cell.Weapon;
                 }
 
                 this.CurrentWeaponIndex = 0;
@@ -79,6 +82,7 @@ namespace Tank.WeaponSystem
             if (currentWeapon.Weapon.OnCooldown == false && currentWeapon.Rotator.IsBusy == false)
             {
                 currentWeapon.Weapon.Fire();
+                this.OnFire?.Invoke(currentWeapon.Weapon);
             }
         }
 

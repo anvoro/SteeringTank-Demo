@@ -1,13 +1,16 @@
-﻿using System;
+﻿
+using System;
+using Tank.Interfaces.Weapon;
 
-namespace Assets.Scripts.Interfaces.View
+namespace Tank.Interfaces.View
 {
     public interface IWeaponHolderView
     {
         event Action<IWeaponHolderView> OnChangeWeapon;
+        event Action<IWeaponView> OnFire;
 
         int CurrentWeaponIndex { get; }
 
-        IWeapon[] WeaponsCache { get; }
+        IWeaponView[] WeaponViews { get; }
     }
 }

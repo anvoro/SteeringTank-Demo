@@ -2,7 +2,7 @@
 using Tank.Interfaces.Unit;
 using UnityEngine;
 
-namespace Assets.Scripts.View.UI
+namespace Tank.View.UI
 {
     internal class MovableHealthBar : HealthBar
     {
@@ -26,8 +26,6 @@ namespace Assets.Scripts.View.UI
 
         private void OnDisable()
         {
-            this._bar.value = 1f;
-
             this.Unsubscribe();
         }
 

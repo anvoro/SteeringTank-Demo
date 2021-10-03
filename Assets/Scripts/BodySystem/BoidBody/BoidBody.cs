@@ -1,5 +1,5 @@
 ﻿
-using Tank.Interfaces.TargetProvider;
+using Tank.Interfaces.DataProvider;
 using UnityEngine;
 
 namespace Tank.BodySystem.BoidBody

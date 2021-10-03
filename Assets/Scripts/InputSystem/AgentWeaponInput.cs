@@ -1,7 +1,7 @@
 ﻿
 using System;
 using Tank.Interfaces.Body;
-using Tank.Interfaces.TargetProvider;
+using Tank.Interfaces.DataProvider;
 using Tank.WeaponSystem;
 using UnityEngine;
 

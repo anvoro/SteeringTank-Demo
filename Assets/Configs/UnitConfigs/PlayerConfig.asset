@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitPrefab: {fileID: 3032364672346133417, guid: dbf8f9c6b62368e4f989c904878a60a9, type: 3}
   Team: {fileID: 11400000, guid: 11a11929a0a9db346a61a7f959dec83c, type: 2}
-  MaxHealth: 20000
+  MaxHealth: 1600
   Armor: 0

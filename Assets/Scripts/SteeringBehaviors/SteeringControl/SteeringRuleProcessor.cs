@@ -2,7 +2,7 @@
 using UnityEngine;
 using Tank.BodySystem.BoidBody;
 using Tank.Interfaces.Body;
-using Tank.Interfaces.TargetProvider;
+using Tank.Interfaces.DataProvider;
 
 namespace Tank.SteeringBehaviors.SteeringControl
 {

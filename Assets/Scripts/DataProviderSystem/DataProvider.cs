@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Tank.DataProviderSystem.DataProviderStrategy;
 using Tank.Game;
 using Tank.Interfaces.Body;
-using Tank.Interfaces.TargetProvider;
+using Tank.Interfaces.DataProvider;
 using Tank.Interfaces.Unit;
 using UnityEngine;
 
@@ -28,7 +28,7 @@ namespace Tank.DataProviderSystem
 
         public IDynamicBody GetTargetBody()
         {
-            IUnit drivenUnit = World.GetUnit(this._drivenBody);
+            IUnit drivenUnit = World.Instance.GetUnit(this._drivenBody);
 
             return this._providerStrategy.TargetSelector(drivenUnit).Body;
         }
@@ -42,9 +42,9 @@ namespace Tank.DataProviderSystem
 
         public IEnumerable<IDynamicBody> GetNeighborBodies()
         {
-            IUnit drivenUnit = World.GetUnit(this._drivenBody);
+            IUnit drivenUnit = World.Instance.GetUnit(this._drivenBody);
 
-            foreach (IUnit unitCandidate in World.GetUnitsAround(this._drivenBody, this._unitDetectRadius, false))
+            foreach (IUnit unitCandidate in World.Instance.GetUnitsAround(this._drivenBody, this._unitDetectRadius, false))
             {
                 if (this._providerStrategy.NeighborSelector(drivenUnit, unitCandidate) == true)
                     yield return unitCandidate.Body;

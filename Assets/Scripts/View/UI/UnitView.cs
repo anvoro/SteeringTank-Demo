@@ -1,10 +1,10 @@
 ﻿
-using Assets.Scripts.Interfaces.View;
 using Tank.Interfaces.Unit;
+using Tank.Interfaces.View;
 using Tank.View.VFX;
 using UnityEngine;
 
-namespace Assets.Scripts.View.UI
+namespace Tank.View.UI
 {
     internal class UnitView : MonoBehaviour
     {
@@ -35,7 +35,7 @@ namespace Assets.Scripts.View.UI
         private void OnUnitActiveStateChange(bool active)
         {
             if(active == true)
-                BattleUI.SetUnit(this);
+                BattleUI.Instance.SetUnit(this);
         }
     }
 }

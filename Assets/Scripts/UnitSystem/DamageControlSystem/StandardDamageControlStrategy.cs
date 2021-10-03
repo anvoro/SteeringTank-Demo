@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Scripts.UnitSystem.DamageControlSystem
+namespace Tank.UnitSystem.DamageControlSystem
 {
     [CreateAssetMenu(menuName = "DamageControlStrategy/Standard")]
     internal class StandardDamageControlStrategy : DamageControlStrategyBase

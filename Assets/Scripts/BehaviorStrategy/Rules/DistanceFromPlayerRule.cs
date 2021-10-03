@@ -15,7 +15,7 @@ namespace Tank.BehaviorStrategy.Rules
 
         public override bool ProcessRule(IDynamicBody drivenBody)
         {
-            float distance = Vector3.Distance(drivenBody.Position, World.Player.Body.Position);
+            float distance = Vector3.Distance(drivenBody.Position, World.Instance.Player.Body.Position);
 
             return distance >= this._minDistance && distance < _maxDistance;
         }

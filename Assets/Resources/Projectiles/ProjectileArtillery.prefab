@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd80af035bcc6d94ea4923cd875d6c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxDamage: 50
+  _maxDamage: 100
   _unitMask:
     serializedVersion: 2
     m_Bits: 256
@@ -27,7 +27,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3744940561091206453, guid: f36b8fcce8aa78f4fb1dd18924a729ff, type: 3}
       propertyPath: _maxDamage
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1756969414038293875, guid: f36b8fcce8aa78f4fb1dd18924a729ff, type: 3}
       propertyPath: _effects.Array.size

@@ -1,17 +1,17 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using Assets.Scripts.Interfaces.View;
+using Tank.Interfaces.View;
+using Tank.Interfaces.Weapon;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Assets.Scripts.View.UI
+namespace Tank.View.UI
 {
     internal class BattleUI : MonoBehaviour
     {
-        private static BattleUI instance;
-
         private readonly List<MovableHealthBar> _healthBars = new List<MovableHealthBar>();
+
+        private UnitView _playerView;
 
         [Header("HealthBars")]
         [SerializeField]
@@ -22,54 +22,54 @@ namespace Assets.Scripts.View.UI
 
         [Header("Weapons")]
         [SerializeField]
-        private Image[] _weaponImages;
+        private WeaponImage[] _weaponImages;
 
         [Header("Prefabs")]
         [SerializeField]
         private MovableHealthBar _healthBarPrefab;
 
-        public static UnitView PlayerView { get; private set; }
+        public static BattleUI Instance { get; private set; }
 
-        public static Vector3 PlayerPosition => PlayerView == null ? Vector3.zero : PlayerView.Unit.Body.Position;
+        public Vector3 PlayerPosition => this._playerView == null ? Vector3.zero : this._playerView.Unit.Body.Position;
 
         private void Awake()
         {
-            if (instance == null)
+            if (Instance == null)
             {
-                instance = this;
+                Instance = this;
             }
-            else if (instance == this)
+            else if (Instance == this)
             {
                 Destroy(gameObject);
                 Debug.LogError("BattleUI is already initialized");
             }
         }
 
-        public static void SetUnit(UnitView unitView)
+        public void SetUnit(UnitView unitView)
         {
             if (unitView.Unit.IsPlayer == true)
             {
-                if (PlayerView != null)
+                if (this._playerView != null)
                     throw new InvalidOperationException("Player already set");
 
-                PlayerView = unitView;
+                this._playerView = unitView;
 
-                setPlayer(PlayerView);
+                setPlayer(this._playerView);
             }
 
             setHealthBar();
 
             void setPlayer(UnitView playerView)
             {
-                instance._playerHealthBar.Init(playerView.Unit);
-                playerView.WeaponHolder.OnChangeWeapon += instance.OnChangeWeapon;
+                this._playerHealthBar.Init(playerView.Unit);
+                playerView.WeaponHolder.OnChangeWeapon += this.OnChangeWeapon;
 
-                instance.OnChangeWeapon(playerView.WeaponHolder);
+                this.OnChangeWeapon(playerView.WeaponHolder);
             }
 
-            void  setHealthBar()
+            void setHealthBar()
             {
-                MovableHealthBar bar = instance.GetHealthBar();
+                MovableHealthBar bar = this.GetHealthBar();
                 bar.Init(unitView.Unit);
                 bar.UnitHudPoint = unitView.UnitHudPoint;
             }
@@ -80,27 +80,27 @@ namespace Assets.Scripts.View.UI
             if (this._weaponImages.Length != 3)
                 throw new NotImplementedException("Logic for current weapon images count not implemented");
 
-            IWeapon[] weapons = weaponHolder.WeaponsCache;
+            IWeaponView[] weapons = weaponHolder.WeaponViews;
             int currentWeaponIndex = weaponHolder.CurrentWeaponIndex;
 
             if (this._weaponImages.Length - weapons.Length > 1)
                 throw new ArgumentException("Cannot draw weapons correctly");
 
-            this._weaponImages[1].sprite = weapons[currentWeaponIndex].Icon;
+            this._weaponImages[1].Init(weapons[currentWeaponIndex]);
 
             int previousWeaponIndex;
             if (currentWeaponIndex - 1 < 0)
                 previousWeaponIndex = weapons.Length - 1;
             else
                 previousWeaponIndex = currentWeaponIndex - 1;
-            this._weaponImages[0].sprite = weapons[previousWeaponIndex].Icon;
+            this._weaponImages[0].Init(weapons[previousWeaponIndex]);
 
             int nextWeaponIndex;
             if (currentWeaponIndex + 1 == weapons.Length)
                 nextWeaponIndex = 0;
             else
                 nextWeaponIndex = currentWeaponIndex + 1;
-            this._weaponImages[2].sprite = weapons[nextWeaponIndex].Icon;
+            this._weaponImages[2].Init(weapons[nextWeaponIndex]);
         }
 
         private MovableHealthBar GetHealthBar()
@@ -113,10 +113,10 @@ namespace Assets.Scripts.View.UI
                 }
             }
 
-            MovableHealthBar newInstance = Instantiate(this._healthBarPrefab, this._healthBarsParent);
-            this._healthBars.Add(newInstance);
+            MovableHealthBar newBar = Instantiate(this._healthBarPrefab, this._healthBarsParent);
+            this._healthBars.Add(newBar);
 
-            return newInstance;
+            return newBar;
         }
     }
 }

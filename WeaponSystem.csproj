@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,21 +53,19 @@
     <UnityVersion>2021.1.13f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Scripts\WeaponSystem\Projectiles\ProjectileEffectBase.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Weapons\WeaponBase.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Projectiles\Projectile.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Projectiles\ProjectileEffects\ExplosionProjectileEffect.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Reactions\SelfDestructReaction.cs" />
-    <Compile Include="Assets\Scripts\WeaponSystem\WeaponRotator\WeaponRotator.cs" />
+    <Compile Include="Assets\Scripts\WeaponSystem\Rotator\WeaponRotator.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\WeaponHolder.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Projectiles\ProjectileEffects\DamageProjectileEffect.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\IWeaponInput.cs" />
-    <Compile Include="Assets\Scripts\WeaponSystem\WeaponRotator\XYWeaponRotator.cs" />
+    <Compile Include="Assets\Scripts\WeaponSystem\Rotator\XYWeaponRotator.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Weapons\ProjectileWeapon.cs" />
     <Compile Include="Assets\Scripts\WeaponSystem\Projectiles\ProjectileEffects\DirectDamageProjectileEffect.cs" />
+    <Compile Include="Assets\Scripts\WeaponSystem\Weapons\RayWeapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\WeaponSystem\WeaponSystem.asmdef" />
@@ -309,18 +307,6 @@
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.13f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>Library\PackageCache\com.unity.analytics@3.3.5\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-      <HintPath>Library\PackageCache\com.unity.analytics@3.3.5\Unity.Analytics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Purchasing">
-      <HintPath>Library\PackageCache\com.unity.purchasing@2.0.6\Editor\UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>Library\PackageCache\com.unity.analytics@3.3.5\Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.13f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>

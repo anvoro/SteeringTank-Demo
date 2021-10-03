@@ -1,13 +1,11 @@
 ﻿
-using Assets.Scripts.Interfaces.View;
+using Tank.Interfaces.Weapon;
 using UnityEngine;
 
-namespace Tank.WeaponSystem
+namespace Tank.WeaponSystem.Weapons
 {
-    internal abstract class WeaponBase : MonoBehaviour, IWeapon
+    internal abstract class WeaponBase : MonoBehaviour, IWeaponView
     {
-        private float _remainingCooldownTime;
-
         [Header("Main")]
         [SerializeField]
         private float _cooldown;
@@ -18,9 +16,13 @@ namespace Tank.WeaponSystem
         [SerializeField]
         private Sprite _weaponSprite;
 
-        public bool OnCooldown => this._remainingCooldownTime > 0;
+        public bool OnCooldown => this.RemainingCooldown > 0;
 
         public Sprite Icon => this._weaponSprite;
+
+        public float RemainingCooldown { get; private set; }
+
+        public float Cooldown => this._cooldown;
 
         public Transform FireTransform => this._fireTransform;
 
@@ -30,11 +32,9 @@ namespace Tank.WeaponSystem
 
         public abstract float ExplosionRadius { get; }
 
-        public Sprite Image => this._weaponSprite;
-
         private void OnDisable()
         {
-            this._remainingCooldownTime = 0;
+            this.RemainingCooldown = 0;
         }
 
         private void Update()
@@ -51,13 +51,13 @@ namespace Tank.WeaponSystem
 
             this.FireInternal();
 
-            this._remainingCooldownTime = this._cooldown;
+            this.RemainingCooldown = this._cooldown;
         }
 
         private void Tick(float deltaTime)
         {
             if (this.OnCooldown == true)
-                this._remainingCooldownTime -= deltaTime;
+                this.RemainingCooldown -= deltaTime;
         }
 
         protected abstract void FireInternal();

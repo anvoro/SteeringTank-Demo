@@ -1,5 +1,5 @@
 ﻿
-using Assets.Scripts.Interfaces.View;
+using Tank.Interfaces.Weapon;
 using UnityEngine;
 
 namespace Tank.View
@@ -12,7 +12,7 @@ namespace Tank.View
 
         private Vector3[] _points;
 
-        private IWeapon _provider;
+        private IWeaponView _provider;
 
         [SerializeField]
         private GameObject _crossPrefab;
@@ -27,7 +27,7 @@ namespace Tank.View
             this._lineRenderer = GetComponent<LineRenderer>();
             this._lineRenderer.positionCount = this._points.Length;
 
-            this._provider = this.GetComponent<IWeapon>();
+            this._provider = this.GetComponent<IWeaponView>();
 
             this._cross = Instantiate(this._crossPrefab, this.transform);
         }

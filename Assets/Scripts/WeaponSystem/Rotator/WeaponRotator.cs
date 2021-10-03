@@ -1,9 +1,9 @@
 ﻿
 using Tank.Interfaces.Body;
-using Tank.WeaponSystem;
+using Tank.WeaponSystem.Weapons;
 using UnityEngine;
 
-namespace Assets.Scripts.WeaponSystem
+namespace Tank.WeaponSystem.Rotator
 {
     internal class WeaponRotator : MonoBehaviour
     {
@@ -35,6 +35,11 @@ namespace Assets.Scripts.WeaponSystem
             this._drivenBody = (IDynamicBody)this._bodyObject;
 
             this.IsBusy = !this._alwaysReady;
+        }
+
+        protected virtual void OnEnable()
+        {
+            this._weapon.FireTransform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
         public virtual void RotateToTarget(Vector3 target, float deltaTime)

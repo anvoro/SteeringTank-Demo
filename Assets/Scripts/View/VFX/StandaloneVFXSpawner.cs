@@ -2,7 +2,7 @@
 using Tank.Interfaces.View;
 using Tank.View.VFX;
 
-namespace Assets.Scripts.View.VFX
+namespace Tank.View.VFX
 {
     internal class StandaloneVFXSpawner : VFXSpawner
     {

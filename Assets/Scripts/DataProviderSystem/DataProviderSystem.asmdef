@@ -2,9 +2,9 @@
     "name": "DataProviderSystem",
     "rootNamespace": "",
     "references": [
-        "GUID:01cacfae6c297484c9394d61d42f1466",
-        "GUID:a1242780b8bd88c40acb494272d1462a",
-        "GUID:ab9875a2a67d27244891860ab0c15fcc"
+        "Interfaces",
+        "World",
+        "Configs"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Tank.Interfaces.Body;
 using UnityEngine;
 
-namespace Tank.Interfaces.TargetProvider
+namespace Tank.Interfaces.DataProvider
 {
     public interface IDataProvider
     {

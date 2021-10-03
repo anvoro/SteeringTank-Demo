@@ -1,10 +1,10 @@
 ﻿
 using System;
-using Assets.Scripts.UnitSystem.DamageControlSystem;
 using Tank.Configs;
 using Tank.Game;
 using Tank.Interfaces.Body;
 using Tank.Interfaces.Unit;
+using Tank.UnitSystem.DamageControlSystem;
 using UnityEngine;
 
 namespace Tank.UnitSystem.Units
@@ -36,7 +36,7 @@ namespace Tank.UnitSystem.Units
         public string Name => this._body.Name;
         public UnitTeam Team => this._config.Team;
 
-        public bool IsPlayer => ReferenceEquals(World.Player, this);
+        public bool IsPlayer => ReferenceEquals(World.Instance.Player, this);
 
         public int MaxHealth { get; private set; }
 

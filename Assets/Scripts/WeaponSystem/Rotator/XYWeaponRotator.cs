@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-namespace Assets.Scripts.WeaponSystem
+namespace Tank.WeaponSystem.Rotator
 {
     internal enum TrajectoryType
     {

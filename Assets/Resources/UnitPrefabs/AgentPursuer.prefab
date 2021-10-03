@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c990b5f77e894494494f04f0cafebaf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weight: 1.2
+  _weight: 1.4
   _updatePeriod: 0.1
   _slowRadius: 0
   _slowPower: 4
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minDistance: 0
-  _maxDistance: 30
+  _maxDistance: 20
 --- !u!1 &5606978053677940758
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31da22c6abf787d4bbc0a7b62e04c2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minDistance: 30
+  _minDistance: 20
   _maxDistance: 100
 --- !u!114 &1697125093463109831
 MonoBehaviour:
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 100
   _explosionForce: 75
-  _explosionRadius: 3
+  _explosionRadius: 5
 --- !u!1001 &5709881407787756931
 PrefabInstance:
   m_ObjectHideFlags: 0

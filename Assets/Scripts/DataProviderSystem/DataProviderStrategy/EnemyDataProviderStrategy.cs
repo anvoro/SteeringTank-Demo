@@ -15,7 +15,7 @@ namespace Tank.DataProviderSystem.DataProviderStrategy
 
         public override IUnit TargetSelector(IUnit drivenUnit)
         {
-            return World.Player;
+            return World.Instance.Player;
         }
     }
 }
