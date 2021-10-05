@@ -20,20 +20,19 @@ namespace Tank.BodySystem.PlayerBody
 
         protected override void Tick(float deltaTime)
         {
-            this.Move(this._moveInput.Acceleration);
             this.Turn(this._moveInput.Rotation);
+            this.Move(this._moveInput.Acceleration);
         }
 
         private void Turn(float value)
         {
             float turn = value * this._turnSpeed;
-            this._rigidbody.AddRelativeTorque(0f, turn, 0f);
+            this._rigidbody.AddTorque(0f, turn, 0f);
         }
 
         private void Move(float value)
         {
-            Vector3 move = Vector3.forward * value * this._maxSpeed;
-
+            Vector3 move = this._maxSpeed * value * Vector3.forward;
             this._rigidbody.AddRelativeForce(move);
         }
     }
